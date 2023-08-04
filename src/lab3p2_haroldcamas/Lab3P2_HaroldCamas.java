@@ -178,7 +178,8 @@ public class Lab3P2_HaroldCamas {
         System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
         String placa = cadena.nextLine().toUpperCase();
         boolean valido = validarPlaca(placa);
-        if(valido == false || placa.charAt(0) != 'H'){
+        boolean existe = existenciaPlaca(placa);
+        if(valido == false || placa.charAt(0) != 'H' || existe == true){
             System.out.println("Placa invalida");
         }
         else{
@@ -213,7 +214,8 @@ public class Lab3P2_HaroldCamas {
         System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
         String placa = cadena.nextLine().toUpperCase();
         boolean valido = validarPlaca(placa);
-        if(valido == false || placa.charAt(0) != 'B'){
+        boolean existe = existenciaPlaca(placa);
+        if(valido == false || placa.charAt(0) != 'B' || existe == true){
             System.out.println("Placa invalida");
         }
         else{
@@ -246,7 +248,8 @@ public class Lab3P2_HaroldCamas {
         System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
         String placa = cadena.nextLine().toUpperCase();
         boolean valido = validarPlaca(placa);
-        if(valido == false || placa.charAt(0) != 'H'){
+        boolean existencia = existenciaPlaca(placa);
+        if(valido == false || placa.charAt(0) != 'H' || existencia == true){
             System.out.println("Placa invalida");
         }
         else{
@@ -295,10 +298,12 @@ public class Lab3P2_HaroldCamas {
                 System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
                 String placa = cadena.nextLine().toUpperCase();
                 boolean valido = validarPlaca(placa);
-                while(valido == false || placa.charAt(0) != 'H'){
+                boolean existe = existenciaPlaca(placa);
+                while(valido == false || placa.charAt(0) != 'H' || existe == true){
                     System.out.println("Ingrese una placa valida del vehiculo: \nFormato(AAA0000)");
                     placa = cadena.nextLine().toUpperCase();
                     valido = validarPlaca(placa);
+                    existe = existenciaPlaca(placa);
                 }
                 vehiculos.get(seleccionado).setPlaca(placa);
                 break;
@@ -370,10 +375,12 @@ public class Lab3P2_HaroldCamas {
                 System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
                 String placa = cadena.nextLine().toUpperCase();
                 boolean valido = validarPlaca(placa);
-                while(valido == false || placa.charAt(0) != 'H'){
+                boolean existe = existenciaPlaca(placa);
+                while(valido == false || placa.charAt(0) != 'B' || existe == true){
                     System.out.println("Ingrese una placa valida del vehiculo: \nFormato(AAA0000)");
                     placa = cadena.nextLine().toUpperCase();
                     valido = validarPlaca(placa);
+                    existe = existenciaPlaca(placa);
                 }
                 vehiculos.get(seleccionado).setPlaca(placa);
                 break;
@@ -439,10 +446,12 @@ public class Lab3P2_HaroldCamas {
                 System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
                 String placa = cadena.nextLine().toUpperCase();
                 boolean valido = validarPlaca(placa);
-                while(valido == false || placa.charAt(0) != 'H'){
+                boolean existe = existenciaPlaca(placa);
+                while(valido == false || placa.charAt(0) != 'H' || existe == true){
                     System.out.println("Ingrese una placa valida del vehiculo: \nFormato(AAA0000)");
                     placa = cadena.nextLine().toUpperCase();
                     valido = validarPlaca(placa);
+                    existe = existenciaPlaca(placa);
                 }
                 vehiculos.get(seleccionado).setPlaca(placa);
                 break;
@@ -543,5 +552,16 @@ public class Lab3P2_HaroldCamas {
             pago += 1000;
         }
         return pago;
+    }
+    
+    public static boolean existenciaPlaca(String placa){
+        boolean valido = false;
+        for (Vehiculo vehiculo : vehiculos) {
+            if(vehiculo.getPlaca().equals(placa)){
+                valido = true;
+                break;
+            }
+        }
+        return valido;
     }
 }
