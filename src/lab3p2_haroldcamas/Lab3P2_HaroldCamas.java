@@ -109,15 +109,31 @@ public class Lab3P2_HaroldCamas {
                     }
                     
                     int index = Listar();
-                    JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar?");
-                    vehiculos.remove(index);
+                    int opchytf = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar?");
+                    if(opchytf == JOptionPane.YES_OPTION){
+                        vehiculos.remove(index);
+                        System.out.println("Eliminado con exito");
+                    }
+                    else{
+                        System.out.println("No se elimino");
+                    }
                     break;
                     
                 case 6:
+                    if(vehiculos.isEmpty()){
+                        System.out.println("VACIO\n");
+                        break;
+                    }
+                    
                     System.out.println(ListarEspecial());
                     break;
                     
                 case 7:
+                    if(vehiculos.isEmpty()){
+                        System.out.println("No hay vehiculos para la boleta");
+                        break;
+                    }
+                    
                     int seleccionado = Listar();
                     System.out.println("BOLETA VEHICULAR");
                     System.out.println(vehiculos.get(seleccionado));
