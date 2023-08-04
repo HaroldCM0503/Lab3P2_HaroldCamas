@@ -45,6 +45,28 @@ public class Lab3P2_HaroldCamas {
                     break;
                     
                 case 4:
+                    int indice = Listar();
+                    
+                    if(vehiculos.get(indice) instanceof Automovil){
+                        System.out.println("""
+                                           1.)Placa
+                                           2.)Marca
+                                           3.)Modelo
+                                           4.)Tipo
+                                           5.)Color
+                                           6.)Año
+                                           7.)Combustible
+                                           8.)Puertas
+                                           9.)Transmision
+                                           10.)Asientos
+                                           """);
+                        int option = sc.nextInt();
+                        modificarAutos(opcion);
+                    }
+                    
+                    else if(vehiculos.get(indice) instanceof Motocicleta){}
+                    
+                    else if(vehiculos.get(indice) instanceof Autobus){}
                     break;
                     
                 case 5:
@@ -189,5 +211,209 @@ public class Lab3P2_HaroldCamas {
         }
     }
     
+    public static int Listar(){
+        for (int i = 0; i < vehiculos.size(); i++) {
+            System.out.println((i + 1) + ".) " + vehiculos.get(i));
+        }
+        System.out.println("");
+        System.out.println("Elija un elemento del lista:");
+        int opcion = sc.nextInt() - 1;
+        while(opcion < 0 || opcion >= vehiculos.size()){
+            System.out.println("Elija un indice valido!");
+            opcion = sc.nextInt() - 1;
+        }
+        return opcion;
+    }
+    
+    public static void modificarAutos(int opcion){
+        switch(opcion){
+            case 1:
+                System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
+                String placa = cadena.nextLine().toUpperCase();
+                boolean valido = validarPlaca(placa);
+                while(valido == false || placa.charAt(0) != 'H'){
+                    System.out.println("Ingrese una placa valida del vehiculo: \nFormato(AAA0000)");
+                    placa = cadena.nextLine().toUpperCase();
+                    valido = validarPlaca(placa);
+                }
+                vehiculos.get(opcion).setPlaca(placa);
+                break;
+                
+            case 2:
+                System.out.println("Ingrese la nueva marca del vehiculo");
+                String marca = cadena.nextLine();
+                vehiculos.get(opcion).setMarca(marca);
+                break;
+                
+            case 3:
+                System.out.println("Ingrese el modelo del vehiculo");
+                String modelo = cadena.nextLine();
+                vehiculos.get(opcion).setModelo(modelo);
+                break;
+                
+            case 4:
+                System.out.println("Ingrese el tipo de vehiculo");
+                String tipo = cadena.nextLine();
+                vehiculos.get(opcion).setTipo(tipo);
+                break;
+                
+            case 5:
+                Color color = JColorChooser.showDialog(null, "Ingrese el color del vehiculo", Color.yellow);
+                vehiculos.get(opcion).setColor(color);
+                break;
+                
+            case 6:
+                DateFormat df = new SimpleDateFormat("YYYY");
+                System.out.println("Ingrese el año del vehiculo:");
+                String años = cadena.nextLine();
+                Date año = df.parse(años);
+                vehiculos.get(opcion).setAño(año);
+                break;
+                
+            case 7:
+                System.out.println("Ingrese el tipo de combustible del vehiculo:");
+                String combustible = cadena.nextLine();
+                ((Automovil) vehiculos.get(opcion)).setCombustible(combustible);
+                break;
+                
+            case 8:
+                System.out.println("Ingrese la cantidad de puertas del vehiculo:");
+                int puertas = sc.nextInt();
+                ((Automovil) vehiculos.get(opcion)).setPuertas(puertas);
+                break;
+                
+            case 9:
+                System.out.println("Ingrese la transmision del vehiculo: ");
+                String transmision = cadena.nextLine();
+                ((Automovil) vehiculos.get(opcion)).setTransmision(transmision);
+                break;
+                
+            case 10:
+                System.out.println("Ingrese la cantidad de asientos del vehiculo:");
+                int asientos = sc.nextInt();
+                ((Automovil) vehiculos.get(opcion)).setAsientos(asientos);
+                break; 
+        }
+    }
+    
+    public static void modificarMotos(int opcion){
+        switch(opcion){
+            case 1:
+                System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
+                String placa = cadena.nextLine().toUpperCase();
+                boolean valido = validarPlaca(placa);
+                while(valido == false || placa.charAt(0) != 'H'){
+                    System.out.println("Ingrese una placa valida del vehiculo: \nFormato(AAA0000)");
+                    placa = cadena.nextLine().toUpperCase();
+                    valido = validarPlaca(placa);
+                }
+                vehiculos.get(opcion).setPlaca(placa);
+                break;
+                
+            case 2:
+                System.out.println("Ingrese la nueva marca del vehiculo");
+                String marca = cadena.nextLine();
+                vehiculos.get(opcion).setMarca(marca);
+                break;
+                
+            case 3:
+                System.out.println("Ingrese el modelo del vehiculo");
+                String modelo = cadena.nextLine();
+                vehiculos.get(opcion).setModelo(modelo);
+                break;
+                
+            case 4:
+                System.out.println("Ingrese el tipo de vehiculo");
+                String tipo = cadena.nextLine();
+                vehiculos.get(opcion).setTipo(tipo);
+                break;
+                
+            case 5:
+                Color color = JColorChooser.showDialog(null, "Ingrese el color del vehiculo", Color.yellow);
+                vehiculos.get(opcion).setColor(color);
+                break;
+                
+            case 6:
+                DateFormat df = new SimpleDateFormat("YYYY");
+                System.out.println("Ingrese el año del vehiculo:");
+                String años = cadena.nextLine();
+                Date año = df.parse(años);
+                vehiculos.get(opcion).setAño(año);
+                break;
+                
+            case 7:
+                break;
+                
+            case 8:
+                break;
+                
+            case 9:
+                break;
+                
+            case 10:
+                break;
+                
+        }
+    }
+    
+    public static void modificarBuses(int opcion){
+        switch(opcion){
+            case 1:
+                System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
+                String placa = cadena.nextLine().toUpperCase();
+                boolean valido = validarPlaca(placa);
+                while(valido == false || placa.charAt(0) != 'H'){
+                    System.out.println("Ingrese una placa valida del vehiculo: \nFormato(AAA0000)");
+                    placa = cadena.nextLine().toUpperCase();
+                    valido = validarPlaca(placa);
+                }
+                vehiculos.get(opcion).setPlaca(placa);
+                break;
+                
+            case 2:
+                System.out.println("Ingrese la nueva marca del vehiculo");
+                String marca = cadena.nextLine();
+                vehiculos.get(opcion).setMarca(marca);
+                break;
+                
+            case 3:
+                System.out.println("Ingrese el modelo del vehiculo");
+                String modelo = cadena.nextLine();
+                vehiculos.get(opcion).setModelo(modelo);
+                break;
+                
+            case 4:
+                System.out.println("Ingrese el tipo de vehiculo");
+                String tipo = cadena.nextLine();
+                vehiculos.get(opcion).setTipo(tipo);
+                break;
+                
+            case 5:
+                Color color = JColorChooser.showDialog(null, "Ingrese el color del vehiculo", Color.yellow);
+                vehiculos.get(opcion).setColor(color);
+                break;
+                
+            case 6:
+                DateFormat df = new SimpleDateFormat("YYYY");
+                System.out.println("Ingrese el año del vehiculo:");
+                String años = cadena.nextLine();
+                Date año = df.parse(años);
+                vehiculos.get(opcion).setAño(año);
+                break;
+                
+            case 7:
+                break;
+                
+            case 8:
+                break;
+                
+            case 9:
+                break;
+                
+            case 10:
+                break;
+                
+        }
+    }
     
 }
