@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
 
 public class Lab3P2_HaroldCamas {
     
@@ -45,6 +46,10 @@ public class Lab3P2_HaroldCamas {
                     break;
                     
                 case 4:
+                    if(vehiculos.isEmpty()){
+                        System.out.println("No hay vehiculos!");
+                        break;
+                    }
                     int indice = Listar();
                     
                     if(vehiculos.get(indice) instanceof Automovil){
@@ -64,12 +69,48 @@ public class Lab3P2_HaroldCamas {
                         modificarAutos(opcion);
                     }
                     
-                    else if(vehiculos.get(indice) instanceof Motocicleta){}
+                    else if(vehiculos.get(indice) instanceof Motocicleta){
+                        System.out.println("""
+                                           1.)Placa
+                                           2.)Marca
+                                           3.)Modelo
+                                           4.)Tipo
+                                           5.)Color
+                                           6.)Año
+                                           7.)Velocidad Maxima
+                                           8.)Peso
+                                           9.)Consumo de Combustible
+                                           """);
+                        int option = sc.nextInt();
+                        modificarMotos(opcion);
+                    }
                     
-                    else if(vehiculos.get(indice) instanceof Autobus){}
+                    else if(vehiculos.get(indice) instanceof Autobus){
+                        System.out.println("""
+                                           1.)Placa
+                                           2.)Marca
+                                           3.)Modelo
+                                           4.)Tipo
+                                           5.)Color
+                                           6.)Año
+                                           7.)Capacidad de Pasajeros
+                                           8.)Ejes
+                                           9.)Longitud
+                                           """);
+                        int option = sc.nextInt();
+                        modificarBuses(opcion);
+                    }
                     break;
                     
                 case 5:
+                    if(vehiculos.isEmpty()){
+                        System.out.println("No hay vehiculos");
+                        break;
+                    }
+                    
+                    int index = Listar();
+                    JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar?");
+                    vehiculos.remove(index);
                     break;
                     
                 case 6:
@@ -170,7 +211,7 @@ public class Lab3P2_HaroldCamas {
             System.out.println("Ingrese el peso del vehiculo:");
             int peso = sc.nextInt();
             System.out.println("Ingrese el consumo L/km del vehiculo:");
-            double consumo = sc.nextInt();
+            double consumo = sc.nextDouble();
             
             Vehiculo moto = new Motocicleta(v_maxima, peso, consumo, placa, marca, modelo, tipo, color, año);
             vehiculos.add(moto);
@@ -225,7 +266,7 @@ public class Lab3P2_HaroldCamas {
         return opcion;
     }
     
-    public static void modificarAutos(int opcion){
+    public static void modificarAutos(int opcion) throws ParseException{
         switch(opcion){
             case 1:
                 System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
@@ -293,10 +334,14 @@ public class Lab3P2_HaroldCamas {
                 int asientos = sc.nextInt();
                 ((Automovil) vehiculos.get(opcion)).setAsientos(asientos);
                 break; 
+                
+            default:
+                System.out.println("No es una opcion valida");
+                break;
         }
     }
     
-    public static void modificarMotos(int opcion){
+    public static void modificarMotos(int opcion) throws ParseException{
         switch(opcion){
             case 1:
                 System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
@@ -342,21 +387,30 @@ public class Lab3P2_HaroldCamas {
                 break;
                 
             case 7:
+                System.out.println("Ingrese la velocidad maxima del vehiculo:");
+                int v_maxima = sc.nextInt();
+                ((Motocicleta) vehiculos.get(opcion)).setV_maxima(v_maxima);
                 break;
                 
             case 8:
+                System.out.println("Ingrese el peso del vehiculo:");
+                int peso = sc.nextInt();
+                ((Motocicleta) vehiculos.get(opcion)).setPeso(peso);
                 break;
                 
             case 9:
+                System.out.println("Ingrese el consumo L/km del vehiculo:");
+                double consumo = sc.nextDouble();
+                ((Motocicleta) vehiculos.get(opcion)).setConsumo(consumo);
                 break;
-                
-            case 10:
+            
+            default:
+                System.out.println("No es una opcion valida.");
                 break;
-                
         }
     }
     
-    public static void modificarBuses(int opcion){
+    public static void modificarBuses(int opcion) throws ParseException{
         switch(opcion){
             case 1:
                 System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
@@ -402,15 +456,25 @@ public class Lab3P2_HaroldCamas {
                 break;
                 
             case 7:
+                System.out.println("Ingrese la capacidad de pasajeros del vehiculo:");
+                int capacidad = sc.nextInt();
+                ((Autobus) vehiculos.get(opcion)).setCapacidad(capacidad);
                 break;
                 
             case 8:
+                System.out.println("Ingrese el numero de ejes del vehiculo");
+                int ejes = sc.nextInt();
+                ((Autobus) vehiculos.get(opcion)).setEjes(ejes);
                 break;
                 
             case 9:
+                System.out.println("Ingrese la longitud del autobus");
+                int longitud = sc.nextInt();
+                ((Autobus) vehiculos.get(opcion)).setLongitud(longitud);
                 break;
                 
-            case 10:
+            default:
+                System.out.println("No es una opcion valida");
                 break;
                 
         }
