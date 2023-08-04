@@ -119,7 +119,9 @@ public class Lab3P2_HaroldCamas {
                     
                 case 7:
                     int seleccionado = Listar();
-                    
+                    System.out.println("BOLETA VEHICULAR");
+                    System.out.println(vehiculos.get(seleccionado));
+                    System.out.println("Total a pagar: " + Boleta(seleccionado));
                     break;
                     
                 case 8:
@@ -511,4 +513,17 @@ public class Lab3P2_HaroldCamas {
         return lista;
     }
     
+    public static int Boleta(int indice){
+        int pago = 525;
+        if(vehiculos.get(indice) instanceof Automovil){
+            pago += 1200;
+        }
+        else if(vehiculos.get(indice) instanceof Motocicleta){
+            pago += 200;
+        }
+        else{
+            pago += 1000;
+        }
+        return pago;
+    }
 }
