@@ -114,9 +114,11 @@ public class Lab3P2_HaroldCamas {
                     break;
                     
                 case 6:
+                    System.out.println(ListarEspecial());
                     break;
                     
                 case 7:
+                    
                     break;
                     
                 case 8:
@@ -480,4 +482,31 @@ public class Lab3P2_HaroldCamas {
         }
     }
     
+    public static String ListarEspecial(){
+        String lista = "Automoviles:\n";
+        for (Object vehiculo : vehiculos) {
+            if(vehiculo instanceof Automovil){
+                lista += vehiculo;
+                lista += "\n";
+            }
+        }
+        
+        lista += "\nMotocicletas:\n";
+        for (Object vehiculo : vehiculos) {
+            if(vehiculo instanceof Motocicleta){
+                lista += vehiculo;
+                lista += "\n";
+            }
+        }
+        
+        lista += "\nAutobus:\n";
+        for (Object vehiculo : vehiculos) {
+            if(vehiculo instanceof Autobus){
+                lista += vehiculo;
+                lista += "\n";
+            }
+        }
+        
+        return lista;
+    }
 }
