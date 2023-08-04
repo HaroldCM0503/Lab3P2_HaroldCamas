@@ -102,6 +102,7 @@ public class Automovil extends Vehiculo {
 
     @Override
     public String toString() {
+        super.toString();
         return "Automovil{" + "combustible=" + combustible + ", puertas=" + puertas + ", transmision=" + transmision + ", asientos=" + asientos + '}';
     }
 }

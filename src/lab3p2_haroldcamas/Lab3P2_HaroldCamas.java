@@ -15,13 +15,13 @@ public class Lab3P2_HaroldCamas {
     static Scanner cadena = new Scanner(System.in);
     static ArrayList<Vehiculo> vehiculos = new ArrayList();
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         boolean seguir = true;
         int opcion = 0;
         
         while(seguir){
             System.out.println("""
-                               1.)Agregar Autobus
+                               1.)Agregar Automovil
                                2.)Agregar Motocicleta
                                3.)Agregar Autobus
                                4.)Modificar Vehiculo
@@ -33,12 +33,15 @@ public class Lab3P2_HaroldCamas {
             opcion = sc.nextInt();
             switch(opcion){
                 case 1:
+                    agregarAutomovil();
                     break;
                     
                 case 2:
+                    agregarMotocicleta();
                     break;
                     
                 case 3:
+                    agregarAutobus();
                     break;
                     
                 case 4:
@@ -116,10 +119,75 @@ public class Lab3P2_HaroldCamas {
             
             Vehiculo carro = new Automovil(combustible, puertas, transmision, asientos, placa, marca, modelo, tipo, color, año);
             vehiculos.add(carro);
+            System.out.println("Automovil añadido con exito.");
         }
     }
     
     public static void agregarMotocicleta() throws ParseException{
-        
+        System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
+        String placa = cadena.nextLine().toUpperCase();
+        boolean valido = validarPlaca(placa);
+        if(valido == false || placa.charAt(0) != 'B'){
+            System.out.println("Placa invalida");
+        }
+        else{
+            System.out.println("Ingrese la marca del vehiculo");
+            String marca = cadena.nextLine();
+            System.out.println("Ingrese el modelo del vehiculo");
+            String modelo = cadena.nextLine();
+            System.out.println("Ingrese el tipo de vehiculo");
+            String tipo = cadena.nextLine();
+            Color color = JColorChooser.showDialog(null, "Ingrese el color del vehiculo", Color.yellow);
+            DateFormat df = new SimpleDateFormat("YYYY");
+            System.out.println("Ingrese el año del vehiculo:");
+            String años = cadena.nextLine();
+            Date año = df.parse(años);
+            
+            System.out.println("Ingrese la velocidad maxima del vehiculo:");
+            int v_maxima = sc.nextInt();
+            System.out.println("Ingrese el peso del vehiculo:");
+            int peso = sc.nextInt();
+            System.out.println("Ingrese el consumo L/km del vehiculo:");
+            double consumo = sc.nextInt();
+            
+            Vehiculo moto = new Motocicleta(v_maxima, peso, consumo, placa, marca, modelo, tipo, color, año);
+            vehiculos.add(moto);
+            System.out.println("Motocicleta añadido con exito.");
+        }
     }
+    
+    public static void agregarAutobus() throws ParseException{
+        System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
+        String placa = cadena.nextLine().toUpperCase();
+        boolean valido = validarPlaca(placa);
+        if(valido == false || placa.charAt(0) != 'H'){
+            System.out.println("Placa invalida");
+        }
+        else{
+            System.out.println("Ingrese la marca del vehiculo");
+            String marca = cadena.nextLine();
+            System.out.println("Ingrese el modelo del vehiculo");
+            String modelo = cadena.nextLine();
+            System.out.println("Ingrese el tipo de vehiculo");
+            String tipo = cadena.nextLine();
+            Color color = JColorChooser.showDialog(null, "Ingrese el color del vehiculo", Color.yellow);
+            DateFormat df = new SimpleDateFormat("YYYY");
+            System.out.println("Ingrese el año del vehiculo:");
+            String años = cadena.nextLine();
+            Date año = df.parse(años);
+            
+            System.out.println("Ingrese la capacidad de pasajeros del vehiculo:");
+            int capacidad = sc.nextInt();
+            System.out.println("Ingrese el numero de ejes del vehiculo");
+            int ejes = sc.nextInt();
+            System.out.println("Ingrese la longitud del autobus");
+            int longitud = sc.nextInt();
+            
+            Vehiculo rapidito = new Autobus(capacidad, ejes, longitud, placa, marca, modelo, tipo, color, año);
+            vehiculos.add(rapidito);
+            System.out.println("Autobus añadido con exito.");
+        }
+    }
+    
+    
 }
