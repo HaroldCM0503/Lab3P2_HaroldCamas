@@ -118,6 +118,7 @@ public class Lab3P2_HaroldCamas {
                     break;
                     
                 case 7:
+                    int seleccionado = Listar();
                     
                     break;
                     
@@ -509,4 +510,5 @@ public class Lab3P2_HaroldCamas {
         
         return lista;
     }
+    
 }

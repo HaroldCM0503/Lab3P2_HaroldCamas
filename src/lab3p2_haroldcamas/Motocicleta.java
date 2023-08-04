@@ -92,7 +92,6 @@ public class Motocicleta extends Vehiculo{
 
     @Override
     public String toString() {
-        super.toString();
-        return "Motocicleta{" + "v_maxima=" + v_maxima + ", peso=" + peso + ", consumo=" + consumo + '}';
+        return "Motocicleta{" + super.toString() + "v_maxima=" + v_maxima + ", peso=" + peso + ", consumo=" + consumo + '}';
     }
 }
