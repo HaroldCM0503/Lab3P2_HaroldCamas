@@ -66,7 +66,7 @@ public class Lab3P2_HaroldCamas {
                                            10.)Asientos
                                            """);
                         int option = sc.nextInt();
-                        modificarAutos(opcion);
+                        modificarAutos(option,indice);
                     }
                     
                     else if(vehiculos.get(indice) instanceof Motocicleta){
@@ -82,7 +82,7 @@ public class Lab3P2_HaroldCamas {
                                            9.)Consumo de Combustible
                                            """);
                         int option = sc.nextInt();
-                        modificarMotos(opcion);
+                        modificarMotos(option,indice);
                     }
                     
                     else if(vehiculos.get(indice) instanceof Autobus){
@@ -98,7 +98,7 @@ public class Lab3P2_HaroldCamas {
                                            9.)Longitud
                                            """);
                         int option = sc.nextInt();
-                        modificarBuses(opcion);
+                        modificarBuses(option,indice);
                     }
                     break;
                     
@@ -109,8 +109,8 @@ public class Lab3P2_HaroldCamas {
                     }
                     
                     int index = Listar();
-                    int opchytf = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar?");
-                    if(opchytf == JOptionPane.YES_OPTION){
+                    int yes_no = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar?");
+                    if(yes_no == JOptionPane.YES_OPTION){
                         vehiculos.remove(index);
                         System.out.println("Eliminado con exito");
                     }
@@ -145,11 +145,13 @@ public class Lab3P2_HaroldCamas {
                     break;
                     
                 default:
+                    System.out.println("Opcion invalida");
                     break;
                     
             }
         }
     }
+    
     public static boolean validarPlaca(String placa){
         char ch = 0;
         boolean valido = true;
@@ -287,7 +289,7 @@ public class Lab3P2_HaroldCamas {
         return opcion;
     }
     
-    public static void modificarAutos(int opcion) throws ParseException{
+    public static void modificarAutos(int opcion,int seleccionado) throws ParseException{
         switch(opcion){
             case 1:
                 System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
@@ -298,30 +300,30 @@ public class Lab3P2_HaroldCamas {
                     placa = cadena.nextLine().toUpperCase();
                     valido = validarPlaca(placa);
                 }
-                vehiculos.get(opcion).setPlaca(placa);
+                vehiculos.get(seleccionado).setPlaca(placa);
                 break;
                 
             case 2:
                 System.out.println("Ingrese la nueva marca del vehiculo");
                 String marca = cadena.nextLine();
-                vehiculos.get(opcion).setMarca(marca);
+                vehiculos.get(seleccionado).setMarca(marca);
                 break;
                 
             case 3:
                 System.out.println("Ingrese el modelo del vehiculo");
                 String modelo = cadena.nextLine();
-                vehiculos.get(opcion).setModelo(modelo);
+                vehiculos.get(seleccionado).setModelo(modelo);
                 break;
                 
             case 4:
                 System.out.println("Ingrese el tipo de vehiculo");
                 String tipo = cadena.nextLine();
-                vehiculos.get(opcion).setTipo(tipo);
+                vehiculos.get(seleccionado).setTipo(tipo);
                 break;
                 
             case 5:
                 Color color = JColorChooser.showDialog(null, "Ingrese el color del vehiculo", Color.yellow);
-                vehiculos.get(opcion).setColor(color);
+                vehiculos.get(seleccionado).setColor(color);
                 break;
                 
             case 6:
@@ -329,25 +331,25 @@ public class Lab3P2_HaroldCamas {
                 System.out.println("Ingrese el año del vehiculo:");
                 String años = cadena.nextLine();
                 Date año = df.parse(años);
-                vehiculos.get(opcion).setAño(año);
+                vehiculos.get(seleccionado).setAño(año);
                 break;
                 
             case 7:
                 System.out.println("Ingrese el tipo de combustible del vehiculo:");
                 String combustible = cadena.nextLine();
-                ((Automovil) vehiculos.get(opcion)).setCombustible(combustible);
+                ((Automovil) vehiculos.get(seleccionado)).setCombustible(combustible);
                 break;
                 
             case 8:
                 System.out.println("Ingrese la cantidad de puertas del vehiculo:");
                 int puertas = sc.nextInt();
-                ((Automovil) vehiculos.get(opcion)).setPuertas(puertas);
+                ((Automovil) vehiculos.get(seleccionado)).setPuertas(puertas);
                 break;
                 
             case 9:
                 System.out.println("Ingrese la transmision del vehiculo: ");
                 String transmision = cadena.nextLine();
-                ((Automovil) vehiculos.get(opcion)).setTransmision(transmision);
+                ((Automovil) vehiculos.get(seleccionado)).setTransmision(transmision);
                 break;
                 
             case 10:
@@ -362,7 +364,7 @@ public class Lab3P2_HaroldCamas {
         }
     }
     
-    public static void modificarMotos(int opcion) throws ParseException{
+    public static void modificarMotos(int opcion, int seleccionado) throws ParseException{
         switch(opcion){
             case 1:
                 System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
@@ -373,30 +375,30 @@ public class Lab3P2_HaroldCamas {
                     placa = cadena.nextLine().toUpperCase();
                     valido = validarPlaca(placa);
                 }
-                vehiculos.get(opcion).setPlaca(placa);
+                vehiculos.get(seleccionado).setPlaca(placa);
                 break;
                 
             case 2:
                 System.out.println("Ingrese la nueva marca del vehiculo");
                 String marca = cadena.nextLine();
-                vehiculos.get(opcion).setMarca(marca);
+                vehiculos.get(seleccionado).setMarca(marca);
                 break;
                 
             case 3:
                 System.out.println("Ingrese el modelo del vehiculo");
                 String modelo = cadena.nextLine();
-                vehiculos.get(opcion).setModelo(modelo);
+                vehiculos.get(seleccionado).setModelo(modelo);
                 break;
                 
             case 4:
                 System.out.println("Ingrese el tipo de vehiculo");
                 String tipo = cadena.nextLine();
-                vehiculos.get(opcion).setTipo(tipo);
+                vehiculos.get(seleccionado).setTipo(tipo);
                 break;
                 
             case 5:
                 Color color = JColorChooser.showDialog(null, "Ingrese el color del vehiculo", Color.yellow);
-                vehiculos.get(opcion).setColor(color);
+                vehiculos.get(seleccionado).setColor(color);
                 break;
                 
             case 6:
@@ -404,25 +406,25 @@ public class Lab3P2_HaroldCamas {
                 System.out.println("Ingrese el año del vehiculo:");
                 String años = cadena.nextLine();
                 Date año = df.parse(años);
-                vehiculos.get(opcion).setAño(año);
+                vehiculos.get(seleccionado).setAño(año);
                 break;
                 
             case 7:
                 System.out.println("Ingrese la velocidad maxima del vehiculo:");
                 int v_maxima = sc.nextInt();
-                ((Motocicleta) vehiculos.get(opcion)).setV_maxima(v_maxima);
+                ((Motocicleta) vehiculos.get(seleccionado)).setV_maxima(v_maxima);
                 break;
                 
             case 8:
                 System.out.println("Ingrese el peso del vehiculo:");
                 int peso = sc.nextInt();
-                ((Motocicleta) vehiculos.get(opcion)).setPeso(peso);
+                ((Motocicleta) vehiculos.get(seleccionado)).setPeso(peso);
                 break;
                 
             case 9:
                 System.out.println("Ingrese el consumo L/km del vehiculo:");
                 double consumo = sc.nextDouble();
-                ((Motocicleta) vehiculos.get(opcion)).setConsumo(consumo);
+                ((Motocicleta) vehiculos.get(seleccionado)).setConsumo(consumo);
                 break;
             
             default:
@@ -431,7 +433,7 @@ public class Lab3P2_HaroldCamas {
         }
     }
     
-    public static void modificarBuses(int opcion) throws ParseException{
+    public static void modificarBuses(int opcion, int seleccionado) throws ParseException{
         switch(opcion){
             case 1:
                 System.out.println("Ingrese la placa del vehiculo: \nFormato(AAA0000)");
@@ -442,30 +444,30 @@ public class Lab3P2_HaroldCamas {
                     placa = cadena.nextLine().toUpperCase();
                     valido = validarPlaca(placa);
                 }
-                vehiculos.get(opcion).setPlaca(placa);
+                vehiculos.get(seleccionado).setPlaca(placa);
                 break;
                 
             case 2:
                 System.out.println("Ingrese la nueva marca del vehiculo");
                 String marca = cadena.nextLine();
-                vehiculos.get(opcion).setMarca(marca);
+                vehiculos.get(seleccionado).setMarca(marca);
                 break;
                 
             case 3:
                 System.out.println("Ingrese el modelo del vehiculo");
                 String modelo = cadena.nextLine();
-                vehiculos.get(opcion).setModelo(modelo);
+                vehiculos.get(seleccionado).setModelo(modelo);
                 break;
                 
             case 4:
                 System.out.println("Ingrese el tipo de vehiculo");
                 String tipo = cadena.nextLine();
-                vehiculos.get(opcion).setTipo(tipo);
+                vehiculos.get(seleccionado).setTipo(tipo);
                 break;
                 
             case 5:
                 Color color = JColorChooser.showDialog(null, "Ingrese el color del vehiculo", Color.yellow);
-                vehiculos.get(opcion).setColor(color);
+                vehiculos.get(seleccionado).setColor(color);
                 break;
                 
             case 6:
@@ -473,25 +475,25 @@ public class Lab3P2_HaroldCamas {
                 System.out.println("Ingrese el año del vehiculo:");
                 String años = cadena.nextLine();
                 Date año = df.parse(años);
-                vehiculos.get(opcion).setAño(año);
+                vehiculos.get(seleccionado).setAño(año);
                 break;
                 
             case 7:
                 System.out.println("Ingrese la capacidad de pasajeros del vehiculo:");
                 int capacidad = sc.nextInt();
-                ((Autobus) vehiculos.get(opcion)).setCapacidad(capacidad);
+                ((Autobus) vehiculos.get(seleccionado)).setCapacidad(capacidad);
                 break;
                 
             case 8:
                 System.out.println("Ingrese el numero de ejes del vehiculo");
                 int ejes = sc.nextInt();
-                ((Autobus) vehiculos.get(opcion)).setEjes(ejes);
+                ((Autobus) vehiculos.get(seleccionado)).setEjes(ejes);
                 break;
                 
             case 9:
                 System.out.println("Ingrese la longitud del autobus");
                 int longitud = sc.nextInt();
-                ((Autobus) vehiculos.get(opcion)).setLongitud(longitud);
+                ((Autobus) vehiculos.get(seleccionado)).setLongitud(longitud);
                 break;
                 
             default:
